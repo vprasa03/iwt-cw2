@@ -17,16 +17,16 @@ h2 {
   padding: 3px;
 }
 
-#oscar-form > div:not(:last-child) {
+#oscar-form div:not(:last-child) {
   margin-right: 3px;
 }
 
-#oscar-form input[type='checkbox']:checked + label {
-  color: #000;
+#oscar-form input[type='checkbox'] + label {
+  margin-left: 3px;
 }
 
 #oscar-form input[type='checkbox']:not(:checked) + label {
-  color: #999;
+  text-decoration: line-through;
 }
 
 #oscar-form > div > input:not(input[type='checkbox']):not(input[type='radio']) {
