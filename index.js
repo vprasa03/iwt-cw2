@@ -60,6 +60,11 @@ class OscarForm {
 
     yearCheckbox.addEventListener('change', (e) => {
       this.yearEnabled = e.target.checked;
+      yearInput.disabled = !this.yearEnabled;
+      if (!this.yearEnabled) {
+        yearInput.value = '';
+        this.year = '';
+      }
     });
     yearInput.addEventListener('input', (e) => {
       this.year = e.target.value.trim();
@@ -206,7 +211,7 @@ class OscarForm {
     event.preventDefault();
 
     // Prepare URL parameters
-    let urlParams = '?'.concat('won=', this.won);
+    let urlParams = 'won='.concat(this.won);
     if (this.yearEnabled) urlParams = urlParams.concat('&year=', this.year);
     if (this.categoryEnabled)
       urlParams = urlParams.concat('&category=', this.category);
