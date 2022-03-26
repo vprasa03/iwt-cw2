@@ -14,8 +14,8 @@
 				<th>Year</th>
 				<th>Category</th>
 				<th>Nominee</th>
-				<th>Won</th>
 				<th>Info</th>
+				<th>Won</th>
 			</tr>
 
 			<!-- Loop through each Nomination item -->
