@@ -10,7 +10,7 @@
 					</p>
 					<p>"<xsl:value-of select="Nominee"/></p>
 					<p><xsl:value-of select="Info"/></p>
-					<p><xsl:value-of selec="Won"/></p>
+					<p><xsl:value-of select="Won"/></p>
 				</li>
 			</xsl:for-each>
 		</ol>
