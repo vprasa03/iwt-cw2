@@ -38,7 +38,7 @@
 							<xsl:value-of select="Info"/>
 						</td>
 						<td>
-							<xsl:value-of select="Won?"/>
+							<xsl:value-of select="Won"/>
 						</td>
 					</tr>
 				</xsl:if>
