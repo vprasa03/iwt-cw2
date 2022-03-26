@@ -1,6 +1,3 @@
-const formatAposAndQuote = (str) =>
-	str.replaceAll("'", "&apos;").replaceAll('"', "&quote");
-
 const app = document.querySelector("#oscar-app");
 const form = document.querySelector("#oscar-form");
 
@@ -12,7 +9,7 @@ form.addEventListener("submit", (e) => {
 	e.preventDefault();
 
 	// GET request to fetch results
-	fetch(`${e.target.action}?key=val&two=3`, { method: "GET" })
+	fetch(`${e.target.action}?key=val&two=3&three='&four="`, { method: "GET" })
 		.then((res) => res.text())
 		.then((res) => {
 			const results = document.querySelector("#results");

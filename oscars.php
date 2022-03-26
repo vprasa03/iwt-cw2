@@ -12,7 +12,7 @@
 	// Parse url query parameters
 	parse_str($_SERVER["QUERY_STRING"], $params);
 	foreach($params as $key => $val) {
-	  echo "<h4>$key:$val</h4>";
+	  echo "<h4>$key:" . htmlentities($val) . "</h4>";
 	}
 
 	// Print result
