@@ -20,7 +20,7 @@
 				<th>Category</th>
 				<th>Nominee</th>
 				<th>Info</th>
-				<th>Won</th>
+				<th>Won?</th>
 			</tr>
 
 			<!-- Loop through each Nomination item -->

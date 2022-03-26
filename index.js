@@ -13,6 +13,7 @@ app.classList.remove('hidden');
  */
 class OscarForm {
   yearEnabled = true;
+  year = '';
   categoryEnabled = false;
   category = '';
   nomineeEnabled = false;
@@ -32,7 +33,7 @@ class OscarForm {
     // Find display element
     this.out = document.querySelector(outSelector);
 
-    this.createYearInput('2010');
+    this.createYearInput();
     this.createCategoryInput();
     this.createNomineeInput();
     this.createInfoInput();
@@ -47,12 +48,30 @@ class OscarForm {
   }
 
   /**
-   * Creates checkbox and text inputs for Year
-   * @param {string} defaultVal default value for year text input
+   * Append created elements to the given form element
+   * @param {string} label Text to display
+   * @param {string} forEl label.for value
+   * @param {HTMLElement[]} children Array of created elements
    */
-  createYearInput = (defaultVal) => {
-    this.year = defaultVal;
+  addElementsToDOM = (labelText, forEl, children) => {
+    const label = document.createElement('label');
+    label.textContent = labelText;
+    label.forEl = forEl;
 
+    const div = document.createElement('div');
+    children
+      .slice(0, 1)
+      .concat(label, children.slice(1))
+      .forEach((child) => {
+        div.appendChild(child);
+      });
+    this.form.appendChild(div);
+  };
+
+  /**
+   * Creates checkbox and text inputs for Year
+   */
+  createYearInput = () => {
     const yearCheckbox = document.createElement('input');
     yearCheckbox.type = 'checkbox';
     yearCheckbox.checked = this.yearEnabled;
@@ -75,8 +94,7 @@ class OscarForm {
       this.year = e.target.value.trim();
     });
 
-    this.form.appendChild(yearCheckbox);
-    this.form.appendChild(yearInput);
+    this.addElementsToDOM('Year', yearCheckbox.name, [yearCheckbox, yearInput]);
   };
 
   /**
@@ -105,8 +123,10 @@ class OscarForm {
       this.category = e.target.value.trim();
     });
 
-    this.form.appendChild(categoryCheckbox);
-    this.form.appendChild(categoryInput);
+    this.addElementsToDOM('Category', categoryCheckbox.name, [
+      categoryCheckbox,
+      categoryInput,
+    ]);
   };
 
   /**
@@ -135,8 +155,10 @@ class OscarForm {
       this.nominee = e.target.value;
     });
 
-    this.form.appendChild(nomineeCheckbox);
-    this.form.appendChild(nomineeInput);
+    this.addElementsToDOM('Nominee', nomineeCheckbox.name, [
+      nomineeCheckbox,
+      nomineeInput,
+    ]);
   };
 
   /**
@@ -165,8 +187,7 @@ class OscarForm {
       this.info = e.target.value;
     });
 
-    this.form.appendChild(infoCheckbox);
-    this.form.appendChild(infoInput);
+    this.addElementsToDOM('Info', infoCheckbox.name, [infoCheckbox, infoInput]);
   };
 
   /**
@@ -198,9 +219,24 @@ class OscarForm {
       });
     });
 
-    this.form.appendChild(allRadio);
-    this.form.appendChild(winRadio);
-    this.form.appendChild(lossRadio);
+    const allLabel = document.createElement('label');
+    allLabel.forEl = allRadio.value;
+    allLabel.textContent = 'All';
+    const winLabel = document.createElement('label');
+    winLabel.forEl = winRadio.value;
+    winLabel.textContent = 'Won';
+    const lossLabel = document.createElement('label');
+    lossLabel.forEl = lossRadio.value;
+    lossLabel.textContent = 'Lost';
+
+    const div = document.createElement('div');
+    div.appendChild(allLabel);
+    div.appendChild(allRadio);
+    div.appendChild(winLabel);
+    div.appendChild(winRadio);
+    div.appendChild(lossLabel);
+    div.appendChild(lossRadio);
+    this.form.appendChild(div);
   };
 
   /**
