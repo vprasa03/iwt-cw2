@@ -8,6 +8,38 @@
 	<xsl:param name="won"/>
 
   <xsl:template match="/Oscars">
+		<table>
+			<tr>
+				<th>Year</th>
+				<th>Category</th>
+				<th>Nominee</th>
+				<th>Won</th>
+				<th>Info</th>
+			</tr>
+			<xsl:for-each select="Nomination">
+			  <xsl:if 
+					test="contains(Year, $year) and contains(Category, $category) and contains(Nominee, $nominee) and contains(Info, $info) and contains(Won, $won)"
+				>
+					<tr>
+						<td>
+							<xsl:value-of select="Year"/> 
+						</td>
+						<td>
+							<xsl:value-of select="Category"/> 
+						</td>
+						<td>
+							<xsl:value-of select="Nominee"/>
+						</td>
+						<td>
+							<xsl:value-of select="Won"/>
+						</td>
+						<td>
+							<xsl:value-of select="Info"/>
+						</td>
+					</tr>
+				</xsl:if>
+			</xsl:for-each>
+		</table>
 		<ol>
 			<xsl:for-each select="Nomination">
 			  <xsl:if 
