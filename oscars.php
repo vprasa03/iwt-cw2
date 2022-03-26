@@ -1,4 +1,9 @@
 <?php
+	/**
+	 * Internet and Web Technologies Coursework-2
+	 * Submitted by Vignesh Prasad (13717879)
+	 */
+
 	// Load xml document and xslt stylesheet
 	$xmlDoc = new DomDocument();
 	$xmlDoc->load("oscars.xml");

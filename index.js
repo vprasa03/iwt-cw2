@@ -1,10 +1,15 @@
+/**
+ * Internet and Web Technologies Coursework-2
+ * Submitted by Vignesh Prasad (13717879)
+ */
+
 const app = document.querySelector('#oscar-app');
 
 // Js enabled, show page contents
 app.classList.remove('hidden');
 
 /**
- * Process form and display results
+ * Creates form, handles submit and displays results
  */
 class OscarForm {
   yearEnabled = true;
@@ -22,9 +27,9 @@ class OscarForm {
    * @param {string} outSelector id of the element where output should be displayed
    */
   constructor(formSelector, outSelector) {
-    // Find #{formID}
+    // Find form element
     this.form = document.querySelector(formSelector);
-    // Find #{resultsID}
+    // Find display element
     this.out = document.querySelector(outSelector);
 
     this.createYearInput('2010');
@@ -198,6 +203,9 @@ class OscarForm {
     this.form.appendChild(lossRadio);
   };
 
+  /**
+   * Creates submit button
+   */
   createSubmitBtn = () => {
     const button = document.createElement('button');
     button.type = 'submit';
@@ -206,6 +214,10 @@ class OscarForm {
     this.form.appendChild(button);
   };
 
+  /**
+   * Form "submit" event handler
+   * @param {Event} event
+   */
   onSubmit = (event) => {
     // Prevent default redirect
     event.preventDefault();
