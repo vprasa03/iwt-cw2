@@ -10,12 +10,9 @@
 	// Parse url query parameters
 	parse_str($_SERVER["QUERY_STRING"], $params);
 	foreach($params as $key => $val) {
-	  echo "<h4>$key:" . htmlentities($val) . "</h4>";
+	  // Pass parameters to xslt
+		$processor->setParameter("", $key, htmlentities($val));
 	}
-
-	// Set parameters
-	$processor->setParameter("", "year", "83");
-	$processor->setParameter("", "category", "Leading");
 
 	// Transform to html
 	$htmlDoc = $processor->transformToDoc($xmlDoc);
