@@ -12,7 +12,7 @@ app.classList.remove('hidden');
  * Creates form, handles submit and displays results
  */
 class OscarForm {
-  yearEnabled = true;
+  yearEnabled = false;
   year = '';
   categoryEnabled = false;
   category = '';
@@ -56,7 +56,7 @@ class OscarForm {
   addElementsToDOM = (labelText, forEl, children) => {
     const label = document.createElement('label');
     label.textContent = labelText;
-    label.forEl = forEl;
+    label.htmlFor = forEl;
 
     const div = document.createElement('div');
     children
@@ -75,11 +75,11 @@ class OscarForm {
     const yearCheckbox = document.createElement('input');
     yearCheckbox.type = 'checkbox';
     yearCheckbox.checked = this.yearEnabled;
-    yearCheckbox.name = 'year-enabled';
+    yearCheckbox.id = 'year-enabled';
 
     const yearInput = document.createElement('input');
-    yearInput.disabled = false;
-    yearInput.name = 'year';
+    yearInput.disabled = true;
+    yearInput.id = 'year';
     yearInput.value = this.year;
 
     yearCheckbox.addEventListener('change', (e) => {
@@ -94,7 +94,7 @@ class OscarForm {
       this.year = e.target.value.trim();
     });
 
-    this.addElementsToDOM('Year', yearCheckbox.name, [yearCheckbox, yearInput]);
+    this.addElementsToDOM('Year', yearCheckbox.id, [yearCheckbox, yearInput]);
   };
 
   /**
@@ -104,11 +104,11 @@ class OscarForm {
     const categoryCheckbox = document.createElement('input');
     categoryCheckbox.type = 'checkbox';
     categoryCheckbox.checked = this.categoryEnabled;
-    categoryCheckbox.name = 'category-enabled';
+    categoryCheckbox.id = 'category-enabled';
 
     const categoryInput = document.createElement('input');
     categoryInput.disabled = true;
-    categoryInput.name = 'category';
+    categoryInput.id = 'category';
     categoryInput.value = this.category;
 
     categoryCheckbox.addEventListener('change', (e) => {
@@ -123,7 +123,7 @@ class OscarForm {
       this.category = e.target.value.trim();
     });
 
-    this.addElementsToDOM('Category', categoryCheckbox.name, [
+    this.addElementsToDOM('Category', categoryCheckbox.id, [
       categoryCheckbox,
       categoryInput,
     ]);
@@ -136,11 +136,11 @@ class OscarForm {
     const nomineeCheckbox = document.createElement('input');
     nomineeCheckbox.type = 'checkbox';
     nomineeCheckbox.checked = this.nomineeEnabled;
-    nomineeCheckbox.name = 'nominee-enabled';
+    nomineeCheckbox.id = 'nominee-enabled';
 
     const nomineeInput = document.createElement('input');
     nomineeInput.disabled = true;
-    nomineeInput.name = 'nominee';
+    nomineeInput.id = 'nominee';
     nomineeInput.value = this.nominee;
 
     nomineeCheckbox.addEventListener('change', (e) => {
@@ -155,7 +155,7 @@ class OscarForm {
       this.nominee = e.target.value;
     });
 
-    this.addElementsToDOM('Nominee', nomineeCheckbox.name, [
+    this.addElementsToDOM('Nominee', nomineeCheckbox.id, [
       nomineeCheckbox,
       nomineeInput,
     ]);
@@ -168,11 +168,11 @@ class OscarForm {
     const infoCheckbox = document.createElement('input');
     infoCheckbox.type = 'checkbox';
     infoCheckbox.checked = this.infoEnabled;
-    infoCheckbox.name = 'info-enabled';
+    infoCheckbox.id = 'info-enabled';
 
     const infoInput = document.createElement('input');
     infoInput.disabled = true;
-    infoInput.name = 'info';
+    infoInput.id = 'info';
     infoInput.value = this.info;
 
     infoCheckbox.addEventListener('change', (e) => {
@@ -187,7 +187,7 @@ class OscarForm {
       this.info = e.target.value;
     });
 
-    this.addElementsToDOM('Info', infoCheckbox.name, [infoCheckbox, infoInput]);
+    this.addElementsToDOM('Info', infoCheckbox.id, [infoCheckbox, infoInput]);
   };
 
   /**
@@ -198,18 +198,21 @@ class OscarForm {
     allRadio.type = 'radio';
     allRadio.checked = true;
     allRadio.value = '';
+    allRadio.id = 'win-loss-all';
     allRadio.name = 'win-loss';
 
     const winRadio = document.createElement('input');
     winRadio.type = 'radio';
     winRadio.checked = false;
     winRadio.value = 'yes';
+    winRadio.id = 'win-loss-win';
     winRadio.name = 'win-loss';
 
     const lossRadio = document.createElement('input');
     lossRadio.type = 'radio';
     lossRadio.checked = false;
     lossRadio.value = 'no';
+    lossRadio.id = 'win-loss-loss';
     lossRadio.name = 'win-loss';
 
     [allRadio, winRadio, lossRadio].forEach((element) => {
@@ -220,22 +223,22 @@ class OscarForm {
     });
 
     const allLabel = document.createElement('label');
-    allLabel.forEl = allRadio.value;
+    allLabel.htmlFor = allRadio.id;
     allLabel.textContent = 'All';
     const winLabel = document.createElement('label');
-    winLabel.forEl = winRadio.value;
+    winLabel.htmlFor = winRadio.id;
     winLabel.textContent = 'Won';
     const lossLabel = document.createElement('label');
-    lossLabel.forEl = lossRadio.value;
+    lossLabel.htmlFor = lossRadio.id;
     lossLabel.textContent = 'Lost';
 
     const div = document.createElement('div');
-    div.appendChild(allLabel);
     div.appendChild(allRadio);
-    div.appendChild(winLabel);
+    div.appendChild(allLabel);
     div.appendChild(winRadio);
-    div.appendChild(lossLabel);
+    div.appendChild(winLabel);
     div.appendChild(lossRadio);
+    div.appendChild(lossLabel);
     this.form.appendChild(div);
   };
 

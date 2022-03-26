@@ -21,20 +21,21 @@ h2 {
   margin-right: 3px;
 }
 
+#oscar-form input[type='checkbox'] {
+  margin: 3px 3px 0 0;
+}
+
 #oscar-form input[type='checkbox'] + label {
   margin-left: 3px;
 }
 
-#oscar-form input[type='checkbox']:not(:checked) + label {
-  text-decoration: line-through;
+#oscar-form input[type='checkbox']:not(:checked) + label,
+#oscar-form input[type='radio']:not(:checked) + label {
+  color: #aaa;
 }
 
 #oscar-form > div > input:not(input[type='checkbox']):not(input[type='radio']) {
   display: block;
-}
-
-#oscar-form > div > input[type='radio']:not(:last-of-type) {
-  margin-right: 12px;
 }
 
 #results > table {
