@@ -217,7 +217,7 @@ class OscarForm {
     console.log(event.target.action + urlParams);
 
     // GET request to fetch results
-    fetch(event.target.action + urlParams, {
+    fetch(window.location.href + 'oscars.php?' + urlParams, {
       method: 'GET',
     })
       .then((res) => res.text())
