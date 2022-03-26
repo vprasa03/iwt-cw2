@@ -21,8 +21,12 @@ h2 {
   margin-right: 3px;
 }
 
-#oscar-form > input[type='checkbox']:not(:checked) + label {
-  color: #888;
+#oscar-form input[type='checkbox']:checked + label {
+  color: #000;
+}
+
+#oscar-form input[type='checkbox']:not(:checked) + label {
+  color: #999;
 }
 
 #oscar-form > div > input:not(input[type='checkbox']):not(input[type='radio']) {
