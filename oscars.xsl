@@ -31,37 +31,15 @@
 							<xsl:value-of select="Nominee"/>
 						</td>
 						<td>
-							<xsl:value-of select="Won"/>
+							<xsl:value-of select="Info"/>
 						</td>
 						<td>
-							<xsl:value-of select="Info"/>
+							<xsl:value-of select="Won?"/>
 						</td>
 					</tr>
 				</xsl:if>
 			</xsl:for-each>
 		</table>
-		<ol>
-			<xsl:for-each select="Nomination">
-			  <xsl:if 
-					test="contains(Year, $year) and contains(Category, $category) and contains(Nominee, $nominee) and contains(Info, $info) and contains(Won, $won)"
-				>
-					<li>
-						<p>
-							<xsl:value-of select="Year"/>, <xsl:value-of select="Category"/> 
-						</p>
-						<p>
-							<xsl:value-of select="Nominee"/>
-						</p>
-						<p>
-							<xsl:value-of select="Info"/>
-						</p>
-						<p>
-							<xsl:value-of select="Won"/>
-						</p>
-					</li>
-				</xsl:if>
-			</xsl:for-each>
-		</ol>
   </xsl:template>
 
 </xsl:stylesheet>
