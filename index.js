@@ -24,8 +24,8 @@ class OscarForm {
 
   /**
    * Constructor
-   * @param {string} formSelector id of the form element to process
-   * @param {string} outSelector id of the element where output should be displayed
+   * @param {string} formSelector element/id/class of the form element to process
+   * @param {string} outSelector element/id/class of the element where output should be displayed
    */
   constructor(formSelector, outSelector) {
     // Find form element
